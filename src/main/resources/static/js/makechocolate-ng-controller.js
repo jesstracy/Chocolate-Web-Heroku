@@ -23,18 +23,14 @@ angular.module('MakeChocolateAngularApp', [])
                             $scope.showNoSolution = true;
                         } else {
                             $scope.showNoSolution = false;
-                            for (var counter = 1; counter <= $scope.mySolution.bigs; counter++) {
-                                $scope.inputNumBigs = $scope.inputNumBigs - counter;
-                                if (counter < $scope.mySolution.smalls) {
-                                    $scope.inputNumSmalls = $scope.inputNumSmalls - counter;
+                            if ($scope.mySolution.bigs > $scope.mySolution.smalls) {
+                                for (var counter = 0; counter < $scope.mySolution.bigs; counter++) {
+                                    $timeout(animateBigsBigger(counter), 500 * counter);
                                 }
-//                                 This just makes it do the console log and wait 800 ms but in the meantime goes back to loop.
-//                                 So all the console logs are getting printed, but not waiting 800ms in between, so all happen pretty much at same time
-//                                $timeout(animate, 800);
-                                $timeout(animate, 500 * counter);
-//                            }
-//                            $scope.inputNumBigs = $scope.inputNumBigs - $scope.mySolution.bigs;
-//                            $scope.inputNumSmalls = $scope.inputNumSmalls - $scope.mySolution.smalls;
+                            } else {
+                                for (var counter = 0; counter < $scope.mySolution.smalls; counter++) {
+                                    $timeout(animateBigsNotBigger(counter), 500 * counter);
+                                }
                             }
                         }
                     },
@@ -53,13 +49,22 @@ angular.module('MakeChocolateAngularApp', [])
 //            }
 //        }
 
-        var animate = function() {
-
-
+        var animateBigsBigger = function(counter) {
             console.log("animate is running!");
+            $scope.inputNumBigs--;
+            if (counter < $scope.mySolution.smalls) {
+                $scope.inputNumSmalls--;
+            }
 
+        }
 
-//            $timeout(animate, 800);
+        var animateBigsNotBigger = function(counter) {
+            console.log("animate is running!");
+            $scope.inputNumSmalls--;
+            if (counter < $scope.mySolution.bigs) {
+                $scope.inputNumBigs--;
+            }
+
         }
 
         $scope.factoryName = "The Chocolate Factory";
