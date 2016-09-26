@@ -1,0 +1,60 @@
+body {
+    background-color: #E85B39;
+    color: white;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.yellow-background {
+    background-color: #FFC65C;
+    color: #8B4513;
+}
+
+.white-background {
+    background-color: white;
+    color: #8B4513;
+    min-height: 350px;
+    height: auto;
+}
+
+.white-border {
+    border: white solid 5px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.red-border {
+    border: #E85B39 solid 5px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.long-div {
+    height = 800px;
+}
+
+.choc-big-bar {
+    float: left;
+    width: 50px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 40px;
+    text-align: center;
+    background-color: orangered;
+    color: white;
+    margin: 5px;
+}
+
+.choc-small-bar {
+    float: left;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+    margin: 2px;
+}
