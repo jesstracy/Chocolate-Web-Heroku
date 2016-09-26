@@ -23,25 +23,25 @@ angular.module('MakeChocolateAngularApp', [])
                             $scope.showNoSolution = true;
                         } else {
                             $scope.showNoSolution = false;
-//                            for (var counter = 1; counter <= $scope.mySolution.bigs; counter++) {
-//                                $scope.inputNumBigs = $scope.inputNumBigs - counter;
-//                                if (counter < $scope.mySolution.smalls) {
-//                                    $scope.inputNumSmalls = $scope.inputNumSmalls - counter;
-//                                }
-                                // This just makes it do the console log and wait 800 ms but in the meantime goes back to loop.
-                                // So all the console logs are getting printed, but not waiting 800ms in between, so all happen pretty much at same time
+                            for (var counter = 1; counter <= $scope.mySolution.bigs; counter++) {
+                                $scope.inputNumBigs = $scope.inputNumBigs - counter;
+                                if (counter < $scope.mySolution.smalls) {
+                                    $scope.inputNumSmalls = $scope.inputNumSmalls - counter;
+                                }
+//                                 This just makes it do the console log and wait 800 ms but in the meantime goes back to loop.
+//                                 So all the console logs are getting printed, but not waiting 800ms in between, so all happen pretty much at same time
 //                                $timeout(animate, 800);
-//                                $timeout(animate, 500 * counter);
+                                $timeout(animate, 500 * counter);
 //                            }
-                            $scope.inputNumBigs = $scope.inputNumBigs - $scope.mySolution.bigs;
-                            $scope.inputNumSmalls = $scope.inputNumSmalls - $scope.mySolution.smalls;
-
+//                            $scope.inputNumBigs = $scope.inputNumBigs - $scope.mySolution.bigs;
+//                            $scope.inputNumSmalls = $scope.inputNumSmalls - $scope.mySolution.smalls;
+                            }
                         }
                     },
                     function errorCallback(response) {
                         console.log("Unable to get data");
-                    });
-        }
+                    })
+            };
 
 //        $scope.testTimeout = function() {
 //            console.log("testTimeout is running");
