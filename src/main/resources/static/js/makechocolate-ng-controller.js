@@ -23,6 +23,9 @@ angular.module('MakeChocolateAngularApp', [])
                             $scope.showNoSolution = true;
                         } else {
                             $scope.showNoSolution = false;
+
+                            $scope.bigsInSolution= 0;
+                            $scope.smallsInSolution = 0;
                             if ($scope.mySolution.bigs > $scope.mySolution.smalls) {
                                 for (var counter = 0; counter < $scope.mySolution.bigs; counter++) {
                                 console.log("Inside bigs for loop", counter);
@@ -92,8 +95,6 @@ angular.module('MakeChocolateAngularApp', [])
         $scope.factoryName = "The Chocolate Factory";
         $scope.showNoSolution = false;
 //        $scope.showInventory = true;
-        $scope.bigsInSolution= 0;
-        $scope.smallsInSolution = 0;
         console.log("ng controller initialized!");
 
 //        $scope.inputNumBigs = 1;
