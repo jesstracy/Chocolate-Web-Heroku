@@ -25,11 +25,13 @@ angular.module('MakeChocolateAngularApp', [])
                             $scope.showNoSolution = false;
                             if ($scope.mySolution.bigs > $scope.mySolution.smalls) {
                                 for (var counter = 0; counter < $scope.mySolution.bigs; counter++) {
-                                    $timeout(animateBigsBigger(counter), 500 * counter);
+                                    console.log("** about to animate in " + 500 * counter);
+                                    $timeout(function() { animateBigsBigger(counter); }, 500 * counter);
                                 }
                             } else {
                                 for (var counter = 0; counter < $scope.mySolution.smalls; counter++) {
-                                    $timeout(animateBigsNotBigger(counter), 500 * counter);
+                                    console.log("about to animate in " + 500 * counter);
+                                    $timeout(function() { animateBigsNotBigger(counter); }, 500 * counter);
                                 }
                             }
                         }
@@ -52,8 +54,13 @@ angular.module('MakeChocolateAngularApp', [])
         var animateBigsBigger = function(counter) {
             console.log("animate is running!");
             $scope.inputNumBigs--;
+            console.log("Moving big from inventory to solution");
+            $scope.bigsInSolution++;
             if (counter < $scope.mySolution.smalls) {
                 $scope.inputNumSmalls--;
+                console.log("Moving small from inventory to solution");
+                $scope.smallsInSolution++;
+
             }
 
         }
@@ -61,15 +68,22 @@ angular.module('MakeChocolateAngularApp', [])
         var animateBigsNotBigger = function(counter) {
             console.log("animate is running!");
             $scope.inputNumSmalls--;
+            console.log("** Moving small from inventory to solution");
+            $scope.smallsInSolution++;
             if (counter < $scope.mySolution.bigs) {
                 $scope.inputNumBigs--;
+                console.log("** Moving big from inventory to solution");
+                $scope.bigsInSolution++;
             }
 
         }
 
+
         $scope.factoryName = "The Chocolate Factory";
         $scope.showNoSolution = false;
 //        $scope.showInventory = true;
+        $scope.bigsInSolution= 0;
+        $scope.smallsInSolution = 0;
         console.log("ng controller initialized!");
 
 //        $scope.inputNumBigs = 1;

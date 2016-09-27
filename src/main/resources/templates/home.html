@@ -54,11 +54,13 @@
         <div style="clear: both">
             <span ng-if="mySolution.hasSolution">
                 <h3>You used {{mySolution.bigs}} bigs and {{mySolution.smalls}} smalls: </h3>
-                <div ng-repeat="chocIndex in makeArray(mySolution.bigs)">
+                <div ng-repeat="chocIndex in makeArray(bigsInSolution)">
+                <!--<div ng-repeat="chocIndex in arrayOfSolutionBigs">-->
                     <div class="choc-big-bar">{{chocIndex + 1}}</div>
                 </div>
 
-                <div ng-repeat="chocIndex in makeArray(mySolution.smalls)">
+                <div ng-repeat="chocIndex in makeArray(smallsInSolution)">
+                <!--<div ng-repeat="chocIndex in arrayOfSolutionSmalls">-->
                     <div class="choc-small-bar">{{chocIndex + 1}}</div>
                 </div>
             </span>
