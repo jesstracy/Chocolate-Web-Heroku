@@ -25,13 +25,22 @@ angular.module('MakeChocolateAngularApp', [])
                             $scope.showNoSolution = false;
                             if ($scope.mySolution.bigs > $scope.mySolution.smalls) {
                                 for (var counter = 0; counter < $scope.mySolution.bigs; counter++) {
+                                console.log("Inside bigs for loop", counter);
                                     console.log("** about to animate in " + 500 * counter);
-                                    $timeout(function() { animateBigsBigger(counter); }, 500 * counter);
+//                                    function() { animateBigsBigger(counter); }
+/*Ben Helped here*/
+                                     var animateLater = animateBigsBigger.bind(null, counter);
+                                    $timeout(animateLater, 500 * counter);
                                 }
                             } else {
-                                for (var counter = 0; counter < $scope.mySolution.smalls; counter++) {
-                                    console.log("about to animate in " + 500 * counter);
-                                    $timeout(function() { animateBigsNotBigger(counter); }, 500 * counter);
+                                for (var counterSmall = 0; counterSmall < $scope.mySolution.smalls; counterSmall++) {
+                                                                console.log("Inside small for loop", counterSmall);
+
+                                    console.log("about to animate in " + 500 * counterSmall);
+/*And here...*/
+                                    var animateLaterSmalls = animateBigsNotBigger.bind(null, counterSmall);
+                                    //{ animateBigsNotBigger(counterSmall); }
+                                    $timeout(animateLaterSmalls , 500 * counterSmall);
                                 }
                             }
                         }
@@ -56,21 +65,22 @@ angular.module('MakeChocolateAngularApp', [])
             $scope.inputNumBigs--;
             console.log("Moving big from inventory to solution");
             $scope.bigsInSolution++;
+            console.log($scope.mySolution.smalls)
+            console.log("Counter in animate", counter)
             if (counter < $scope.mySolution.smalls) {
                 $scope.inputNumSmalls--;
                 console.log("Moving small from inventory to solution");
                 $scope.smallsInSolution++;
-
             }
 
         }
 
-        var animateBigsNotBigger = function(counter) {
+        var animateBigsNotBigger = function(counterSmall) {
             console.log("animate is running!");
             $scope.inputNumSmalls--;
             console.log("** Moving small from inventory to solution");
             $scope.smallsInSolution++;
-            if (counter < $scope.mySolution.bigs) {
+            if (counterSmall < $scope.mySolution.bigs) {
                 $scope.inputNumBigs--;
                 console.log("** Moving big from inventory to solution");
                 $scope.bigsInSolution++;
