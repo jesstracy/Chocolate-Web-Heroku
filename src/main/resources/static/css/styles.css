@@ -1,5 +1,5 @@
 body {
-    background-color: #E85B39;
+    background-color: gray;
     color: white;
 }
 
@@ -9,12 +9,12 @@ body {
 
 .yellow-background {
     background-color: #FFC65C;
-    color: #8B4513;
+    color: black;
 }
 
 .white-background {
     background-color: white;
-    color: #8B4513;
+    color: black;
     min-height: 350px;
     height: auto;
 }
