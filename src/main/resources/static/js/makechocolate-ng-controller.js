@@ -30,7 +30,6 @@ angular.module('MakeChocolateAngularApp', [])
                                 for (var counter = 0; counter < $scope.mySolution.bigs; counter++) {
                                 console.log("Inside bigs for loop", counter);
                                     console.log("** about to animate in " + 500 * counter);
-//                                    function() { animateBigsBigger(counter); }
 /*Ben Helped here*/
                                      var animateLater = animateBigsBigger.bind(null, counter);
                                     $timeout(animateLater, 500 * counter);
@@ -42,7 +41,6 @@ angular.module('MakeChocolateAngularApp', [])
                                     console.log("about to animate in " + 500 * counterSmall);
 /*And here...*/
                                     var animateLaterSmalls = animateBigsNotBigger.bind(null, counterSmall);
-                                    //{ animateBigsNotBigger(counterSmall); }
                                     $timeout(animateLaterSmalls , 500 * counterSmall);
                                 }
                             }
@@ -94,10 +92,8 @@ angular.module('MakeChocolateAngularApp', [])
 
         $scope.factoryName = "The Chocolate Factory";
         $scope.showNoSolution = false;
-//        $scope.showInventory = true;
         console.log("ng controller initialized!");
 
-//        $scope.inputNumBigs = 1;
 //        $timeout($scope.testTimeout, 1000);
 
 

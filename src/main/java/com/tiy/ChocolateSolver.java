@@ -5,45 +5,30 @@ package com.tiy;
  */
 public class ChocolateSolver {
 
-    public ChocolateSolution makeChocolate(int big, int small, int goal) {
-
-        ChocolateSolution solution = new ChocolateSolution();
-        int maxGoal = small + (big * 5);
-
-        if (goal > maxGoal) {
-            System.out.println("Not enough chocolate");
-            solution.setNoSolution();
-            return solution;
-        }
-
-        int smallsRequired = 0;
-        int bigsRequired = 0;
-
-        if (big == 0) {
-            smallsRequired = goal;
+    public ChocolateSolution makeChocolate(int small, int big, int goal) {
+        ChocolateSolution mySolution = new ChocolateSolution();
+        if (small < 0 || big < 0 || goal < 0) {
+            mySolution.setNoSolution();
         } else {
-            smallsRequired = goal % 5;
-            bigsRequired = goal / 5;
-        }
-
-        if (smallsRequired > small) {
-            System.out.println("Not enough smalls");
-            solution.setNoSolution();
-            return solution;
-        }
-
-        if (bigsRequired > big) {
-            smallsRequired += 5 * (bigsRequired - big);
-            bigsRequired = big;
-            if (smallsRequired > small) {
-                System.out.println("Not enough bigs");
-                solution.setNoSolution();
-                return solution;
+            int greatestMultipleOfFiveInGoal = goal - (goal % 5);
+            int numBigsNeededToMakeGreatestMultipleOfFiveInGoal = greatestMultipleOfFiveInGoal / 5;
+            if (big <= numBigsNeededToMakeGreatestMultipleOfFiveInGoal) {
+                int smallsNeeded = goal - (5 * big);
+                if (small >= smallsNeeded) {
+                    mySolution.setSolution(smallsNeeded, big);
+                } else {
+                    mySolution.setNoSolution();
+                }
+            } else {
+                int smallsNeeded = goal - (5 * numBigsNeededToMakeGreatestMultipleOfFiveInGoal);
+                if (small >= smallsNeeded) {
+                    mySolution.setSolution(smallsNeeded, numBigsNeededToMakeGreatestMultipleOfFiveInGoal);
+                } else {
+                    mySolution.setNoSolution();
+                }
             }
         }
-
-        solution.setSolution(smallsRequired, bigsRequired);
-
-        return solution;
+        return mySolution;
     }
+
 }

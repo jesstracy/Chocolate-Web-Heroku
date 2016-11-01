@@ -41,21 +41,24 @@ public class ChocolateSolverTest {
     }
 
     @Test
-    public void testEnoughBigsNoSmalls2() throws Exception {solution = solver.makeChocolate(0, 2, 10);
+    public void testEnoughBigsNoSmalls2() throws Exception {
+        solution = solver.makeChocolate(0, 2, 10);
         assertEquals(0, solution.smalls);
         assertEquals(2, solution.bigs);
         assertTrue(solution.hasSolution);
     }
 
     @Test
-    public void testNoBigsNoSmallsEqualsZero2() throws Exception {solution = solver.makeChocolate(0, 0, 0);
+    public void testNoBigsNoSmallsEqualsZero2() throws Exception {
+        solution = solver.makeChocolate(0, 0, 0);
         assertEquals(0, solution.smalls);
         assertEquals(0, solution.bigs);
         assertTrue(solution.hasSolution);
     }
 
     @Test
-    public void testNoBigsNoSmallsEqualsOne2() throws Exception {solution = solver.makeChocolate(0, 0, 1);
+    public void testNoBigsNoSmallsEqualsOne2() throws Exception {
+        solution = solver.makeChocolate(0, 0, 1);
         assertEquals(-1, solution.smalls);
         assertEquals(-1, solution.bigs);
         assertFalse(solution.hasSolution);
