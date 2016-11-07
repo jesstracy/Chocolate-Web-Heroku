@@ -16,4 +16,4 @@ We extended the problem to include the number of large bars of chocolate in the 
 allow the user to enter the amounts of chocolate they have (small and large) and how much they want (goal) and to display the chocolate in
 their inventory as well as in the solution.
 
-Access my app by going to http://http://make-chocolate-2.herokuapp.com/
+Access my app by going to http://make-chocolate-2.herokuapp.com/.
